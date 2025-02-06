@@ -1,17 +1,21 @@
 const express = require("express")
 const server = express()
 
+const nunjucks = require("nunjucks")
+nunjucks.configure("./",{
+    express: server
+})
 
 server.get("/", function(req,res){
-    return res.send("Página Principal")
+    return res.render("principal.html",)
 })
 
 server.get("/aluno", function(req,res){
-    return res.send("Aluno")
+    return res.render("aluno.html",)
 })
 
 server.get("/professor", function(req,res){
-    return res.send("Professor")
+    return res.render("professor.html",)
 })
 
 server.listen(3000, function(){
