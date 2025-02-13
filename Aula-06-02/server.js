@@ -1,21 +1,20 @@
 const express = require("express")
+const dotenv = require("dotenv")
 const server = express()
+
+dotenv.config()
+
+const port = process.env.PORTA
+
+const banco_dados = [];
 
 const nunjucks = require("nunjucks")
 nunjucks.configure("./",{
     express: server
 })
 
-server.get("/", function(req,res){
-    return res.render("principal.html",)
-})
-
 server.get("/aluno", function(req,res){
-    return res.render("aluno.html",)
-})
-
-server.get("/professor", function(req,res){
-    return res.render("professor.html",)
+    return res.json(banco_dados)
 })
 
 server.listen(3000, function(){
